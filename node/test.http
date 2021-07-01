@@ -1,0 +1,107 @@
+@url=http://localhost:3000
+@json=Content-Type: application/json
+
+### 获取地铁图数据
+get {{url}}/metroData/metro_data.json
+
+### 
+get {{url}}/getMetroData
+
+### 获取地铁位置
+post {{url}}/getMetroPos
+{{json}}
+
+{
+    "line":{
+        "id":"l01-0"
+    }
+}
+
+### 查询线路
+post {{url}}/line/getLine
+{{json}}
+
+{
+    "name":"1号线"
+}
+
+### 查询所有站点
+post {{url}}/station/getAllStations
+
+
+
+### 上传乘客量
+post {{url}}/passVol/uploadPassVol
+{{json}}
+
+{
+    "train_id":"l01-0",
+    "line_id":"l01",
+    "vols":[
+        0.25,
+        0.58,
+        0.78,
+        0.56,
+        0.34,
+        0.45
+    ]
+}
+
+### 查询乘客量
+post {{url}}/passVol/getPassVol
+{{json}}
+
+{
+    "train_id":"l01-0-0"
+}
+
+### 查询进站量
+post {{url}}/passEntry/getPassEntry
+{{json}}
+
+{
+    "station_id":"7"
+}
+
+### 查询所有进站量
+post {{url}}/passEntry/getPassEntryAllDay
+{{json}}
+
+{
+    "date":"2021-06-16"
+}
+
+### 查询故障
+post {{url}}/fault/getLineFaultDate
+
+### 查询路径
+post {{url}}/path/getPath
+{{json}}
+
+{
+    "o_sid":"1",
+    "d_sid":"67"
+}
+
+###增加站点
+post {{url}}/edit/addStation
+{{json}}
+
+{
+    "name":"新站点2",
+    "x":100,
+    "y":100,
+    "labelPos":"bottom"
+}
+
+
+### 查询所有路线拥挤度
+post {{url}}/passVol/getAllLinePassVol
+
+### 预测进站量
+post {{url}}/passEntry/predictEntry
+{{json}}
+
+{
+    "station_id":"8"
+}
